@@ -84,6 +84,10 @@
                     Pradipta
                 </div>
 
+                <h1>
+                    Dityaherdi commited!
+                </h1>
+
                 <div class="links">
                     <a href="https://laravel.com/docs">Documentation</a>
                     <a href="https://laracasts.com">Laracasts</a>
