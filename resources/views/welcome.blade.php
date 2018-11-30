@@ -84,9 +84,9 @@
                     We HER!
                 </div>
 
-                <h1>
-                    Dityaherdi commited!
-                </h1>
+                <div class="title m-b-md">
+                    We TA!
+                </div>
 
                 <div class="links">
                     <a href="https://laravel.com/docs">Documentation</a>
