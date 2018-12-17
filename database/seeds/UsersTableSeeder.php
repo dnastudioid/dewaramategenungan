@@ -16,16 +16,19 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Jane Doe',
                 'email' => 'janedoe@gmail.com',
                 'password' => bcrypt('123456'),
+                'role' => 'admin'
             ],
             [
                 'name' => 'John Doe',
                 'email' => 'john@gmail.com',
                 'password' => bcrypt('123456'),
+                'role' => 'admin'
             ],
             [
                 'name' => 'John Cena',
                 'email' => 'johncena@gmail.com',
                 'password' => bcrypt('123456'),
+                'role' => 'master'
             ]
         ]);
     }

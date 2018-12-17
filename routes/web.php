@@ -44,6 +44,7 @@ Route::group(['middleware' => 'role:admin', 'prefix' => 'admin', 'namespace' => 
         return redirect('admin/dashboard');
     });
     Route::get('dashboard', 'DashboardController@index');
+    // Perintah
 });
 
 
