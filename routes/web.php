@@ -49,6 +49,15 @@ Route::group(['middleware' => 'role:admin', 'prefix' => 'admin', 'namespace' => 
     /* Pradipta */
     Route::resource('article', 'ArticleController');
     /* End Pradipta */
+
+
+    //suhendra
+    Route::get('menus', 'MenuController@getMenu');
+    Route::get('add-menu', 'MenuController@addMenu');
+    Route::post('add-menu', 'MenuController@storeMenu');
+    Route::get('edit-menu/{id}', 'MenuController@editMenu');
+    Route::post('edit-menu', 'MenuController@updateMenu');
+    //end of suhendra
 });
 
 

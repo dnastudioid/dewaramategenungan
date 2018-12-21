@@ -9,5 +9,7 @@ class Menu extends Model
 {
     use SoftDeletes;
     //
+
+    protected $guarded = ['id'];
     protected $dates = ['deleted_at'];
 }

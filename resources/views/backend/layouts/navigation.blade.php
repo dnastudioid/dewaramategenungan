@@ -31,8 +31,8 @@
           </li>
           <li><a><i class="fa fa-list "></i> Menus <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li><a href="#">Add Menu</a></li>
-              <li><a href="#">Menus</a></li>
+              <li><a href="{{Help::url('add-menu')}}">Add Menu</a></li>
+              <li><a href="{{Help::url('menus')}}">Menus</a></li>
             </ul>
           </li>
           <li><a><i class="fa fa-book"></i> Articles <span class="fa fa-chevron-down"></span></a>
