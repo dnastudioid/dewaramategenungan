@@ -17,8 +17,8 @@ class CreateCommentsTable extends Migration
             $table->increments('id');
             $table->integer('article_id')->unsigned();
             $table->string('name');
-            $table->text('comment')->nullable();
-            $table->boolean('status')->default(0);
+            $table->text('comment');
+            $table->enum('status',['approved','not_approved'])->default('not_approved');
             $table->timestamps();
 
             $table->foreign('article_id')->references('id')->on('articles');

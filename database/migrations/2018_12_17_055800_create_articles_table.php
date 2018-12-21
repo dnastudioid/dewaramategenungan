@@ -18,10 +18,10 @@ class CreateArticlesTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('title');
             $table->string('slug');
-            $table->string('file');
             $table->string('cover');
             $table->string('place');
-            $table->text('description')->nullable();
+            $table->text('description');
+            $table->enum('status',['published','archived'])->default('archived');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
