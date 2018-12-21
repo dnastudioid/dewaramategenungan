@@ -17,7 +17,7 @@
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
-        @include('backend.layouts.navigation')
+        @include('backend.layouts.navigation',['activeMenu' => $activeMenu])
         @include('backend.layouts.header')
         @yield('content')
         @include('backend.layouts.footer')

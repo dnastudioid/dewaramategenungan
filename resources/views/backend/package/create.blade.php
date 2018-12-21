@@ -1,4 +1,4 @@
-@extends('backend.layouts.app')
+@extends('backend.layouts.app',['activeMenu' => 'add-packages'])
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/color.css') }}">

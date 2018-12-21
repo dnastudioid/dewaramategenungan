@@ -759,6 +759,13 @@ i.glyphicon.glyphicon-calendar {
 a.comments{
 	float:right;
 	color:#7C7C7C;
+    text-decoration:none;
+	font-size:1em;	
+}
+a.author{
+    float: inherit;
+    margin-left: 0.7em;
+	color:#7C7C7C;
 	text-decoration:none;
 	font-size:1em;	
 }

@@ -35,6 +35,28 @@
 
 </head>
 <body>
+	@if (Request::is('/'))
+		<div class="header">
+			<div class="container">
+				<div class="logo animated wow pulse" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<h1><a href="index.html"><span>C</span><img src="{{asset('frontend/images/oo.png')}}" alt=""><img src="{{asset('frontend/images/oo.png')}}" alt="">kery</a></h1>
+				</div>
+				@include('frontend.layouts.navigation',['activeMenu' => $activeMenu])
+				<div class="clearfix"></div>
+			</div>
+			@include('frontend.home.carousel')
+		</div>
+		@else
+		<div class="header head">
+			<div class="container">
+				<div class="logo animated wow pulse" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<h1><a href="index.html"><span>C</span><img src="{{asset('frontend/images/oo.png')}}" alt=""><img src="{{asset('frontend/images/oo.png')}}" alt="">kery</a></h1>
+				</div>
+				@include('frontend.layouts.navigation',['activeMenu' => $activeMenu])
+				<div class="clearfix"></div>
+			</div>      
+		</div>
+	@endif
     @yield("content")
     @include('frontend.layouts.footer')
     @yield("js")
