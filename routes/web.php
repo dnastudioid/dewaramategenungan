@@ -51,6 +51,10 @@ Route::group(['middleware' => 'role:admin', 'prefix' => 'admin', 'namespace' => 
     /* Pradipta */
     Route::resource('article', 'ArticleController');
     /* End Pradipta */
+
+    /* Dityaherdi */
+    Route::resource('package', 'PackageController');
+    /* End Dityaherdi */
 });
 
 
