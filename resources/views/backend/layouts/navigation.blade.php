@@ -25,8 +25,8 @@
           <li><a href="{{Help::url('dashboard')}}"><i class="fa fa-home"></i> Dashboard </a></li>
           <li><a><i class="fa fa-archive"></i> Paket <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li><a href="#">Tambah Paket</a></li>
-              <li><a href="#">Paket</a></li>
+              <li><a href="{{ Help::url('package/create') }}">Tambah Paket</a></li>
+              <li><a href="{{ Help::url('package') }}">Paket</a></li>
             </ul>
           </li>
           <li><a><i class="fa fa-list "></i> Menu <span class="fa fa-chevron-down"></span></a>
