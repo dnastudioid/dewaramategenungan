@@ -17,6 +17,8 @@ Auth::routes();
 /* THIS IS START THE FRONTEND ROUTES */
 Route::namespace('Frontend')->group(function(){
     Route::get('/', 'HomeController@index');
+    Route::get('article/read/{slug}', 'HomeController@read');
+    Route::get('article','ArticleController@all');
 });
 
 /* END OF THE FRONTEND ROUTES */

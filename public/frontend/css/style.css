@@ -358,7 +358,7 @@ ul.grid-news li b {
 }
 /*--conent--*/
 .content-item {
-  background: url(../images/ne.jpg) no-repeat;
+  /* background: url(../images/ne.jpg) no-repeat; */
   -moz-backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
