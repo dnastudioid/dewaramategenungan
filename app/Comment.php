@@ -6,5 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    //
+    protected $table = 'comments';
+
+    protected $fillable = [
+        'article_id', 'name', 'comment', 'status'
+    ];
+
+    public function Article(){
+        return $this->belongsTo('App\Article');
+    }
 }

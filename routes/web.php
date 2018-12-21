@@ -34,7 +34,8 @@ Route::get('/home', function(){
 Route::get('/redirecting', function(){
     if(Auth::user()->role == 'master'){
         return redirect('master');
-    }elseif(Auth::user()->role == 'admin'){
+    }
+    elseif(Auth::user()->role == 'admin'){
         return redirect('admin');
     }
 });
@@ -44,7 +45,10 @@ Route::group(['middleware' => 'role:admin', 'prefix' => 'admin', 'namespace' => 
         return redirect('admin/dashboard');
     });
     Route::get('dashboard', 'DashboardController@index');
-    // Perintah
+
+    /* Pradipta */
+    Route::resource('article', 'ArticleController');
+    /* End Pradipta */
 });
 
 
