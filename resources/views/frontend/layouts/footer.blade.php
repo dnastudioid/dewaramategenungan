@@ -3,11 +3,12 @@
         <div class="footer-head">
             <div class="col-md-8 footer-top animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
                 <ul class=" in">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a  href="menu.html">Menu</a></li>
-                    <li><a  href="blog.html">Blog</a></li>
-                    <li><a  href="events.html">Events</a></li>
-                    <li><a  href="contact.html">Contact</a></li>
+                    <li><a class="active" href="{{url('/')}}">Home</a></li>
+                    <li><a  href="menu.html">Menus</a></li>
+                    <li><a  href="blog.html">Packages</a></li>
+                    <li><a  href="typo.html">Galleries</a></li>
+                    <li><a  href="events.html">Articles</a></li>
+                    <li><a  href="contact.html">About Us</a></li>
                 </ul>					
                     <span>There are many variations of passages</span>
             </div>

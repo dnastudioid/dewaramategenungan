@@ -1,4 +1,4 @@
-@extends('backend.layouts.app', ['activeMenu' => 'menus'])
+@extends('backend.layouts.app')
 
 @section('css')
 <link href="{{asset('backend/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css')}}" rel="stylesheet">
@@ -25,19 +25,18 @@
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
           <div class="x_title">
-            <h2>Data Menu</h2>
+            <h2>Galleries</h2>
             <div class="clearfix"></div>
           </div>
-          <a href="{{Help::url('menu/create')}}" class="btn btn-primary">Add Menu</a>
+          <a href="{{Help::url('add-photo')}}" class="btn btn-primary">Add Photo</a>
           <div class="x_content">
             <table id="datatable" class="table table-striped table-bordered">
               <thead>
                 <tr>
                   <th width="25px"><center>No</center></th>
-                  <th><center>Name</center></th>
-                  <th style="width: 300px;"><center>Description</center></th>
-                  <th><center>Category</center></th>
+                  <th><center>Created by</center></th>
                   <th><center>Image</center></th>
+                  <th><center>Caption</center></th>
                   <th><center>Date added</center></th>
                   <th><center>Opsi</center></th>
                 </tr>
@@ -47,17 +46,16 @@
                     $no = 1;
                 @endphp
 
-               @foreach ($menus as $menu)
+               @foreach ($galleries as $gallery)
                     <tr>
                         <td><center> {{$no++}} </center></td>
-                        <td><center> {{$menu->name}} </center></td>
-                        <td><center> {{$menu->description}} </center></td>
-                        <td><center> {{$menu->category}} </center></td>
-                        <td><center> <button class="btn btn-sm btn-success" onClick="showImage('{{$menu->file}}');">Show image</button></center></td>
-                        <td><center> {{$menu->created_at->format('d M Y')}} </center></td>
+                        <td><center> {{$gallery->name}} </center></td>
+                        <td><center> <button class="btn btn-sm btn-success" onClick="showImage('{{$gallery->file}}');">Show image</button></center></td>
+                        <td><center> {{$gallery->caption}} </center></td>
+                        <td><center> {{$gallery->created_at->format('d M Y')}} </center></td>
                         <td><center>
-                            <a href="{{Help::url('menu/'.$menu->id.'/edit')}}" class="fa fa-pencil"></a>
-                            <a href="javascript:void(0)" class="fa fa-trash" onclick="deleteMenu('{{$menu->id}}')"></a>
+                            <a href="{{Help::url('edit-menu/'.$menu->id)}}" class="fa fa-pencil"></a>
+                            <a href="javascript:void(0)" class="fa fa-trash" onclick="deleteArticle('{{$menu->id}}')"></a>
                         </center></td>
                     </tr>
                 @endforeach
@@ -91,10 +89,10 @@
       });
     }
 
-    function deleteMenu(id){
+    function deleteArticle(id){
         bootbox.confirm("Apakah anda ingin menghapus data ini ?", function(result){
             if (result) {
-                $('#formDelete').attr('action', '{{Help::url('delete-menu')}}/'+id);
+                $('#formDelete').attr('action', '{{Help::url('article')}}/'+id);
                 $('#formDelete').submit();
             }
         });

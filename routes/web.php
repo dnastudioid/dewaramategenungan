@@ -17,6 +17,8 @@ Auth::routes();
 /* THIS IS START THE FRONTEND ROUTES */
 Route::namespace('Frontend')->group(function(){
     Route::get('/', 'HomeController@index');
+    Route::get('article/read/{slug}', 'HomeController@read');
+    Route::get('article','ArticleController@all');
 });
 
 /* END OF THE FRONTEND ROUTES */
@@ -50,14 +52,15 @@ Route::group(['middleware' => 'role:admin', 'prefix' => 'admin', 'namespace' => 
     Route::resource('article', 'ArticleController');
     /* End Pradipta */
 
-
     //suhendra
-    Route::get('menus', 'MenuController@getMenu');
-    Route::get('add-menu', 'MenuController@addMenu');
-    Route::post('add-menu', 'MenuController@storeMenu');
-    Route::get('edit-menu/{id}', 'MenuController@editMenu');
-    Route::post('edit-menu', 'MenuController@updateMenu');
+    Route::resource('menu', 'MenuController');
+    Route::resource('gallery', 'GalleryController');
     //end of suhendra
+
+    /* Dityaherdi */
+    Route::resource('package', 'PackageController');
+    /* End Dityaherdi */
+
 });
 
 

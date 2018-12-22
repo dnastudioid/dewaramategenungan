@@ -2,12 +2,12 @@
     <a href="#" class="navicon"></a>
         <div class="toggle">
             <ul class="toggle-menu">
-                <li><a class="active" href="index.html">Home</a></li>
-                <li><a  href="menu.html">Menu</a></li>
-                <li><a  href="blog.html">Blog</a></li>
-                <li><a  href="typo.html">Codes</a></li>
-                <li><a  href="events.html">Events</a></li>
-                <li><a  href="contact.html">Contact</a></li>
+                <li><a class="{{$activeMenu == 'home' ? 'active' : ''}}" href="{{url('/')}}">Home</a></li>
+                <li><a class="{{$activeMenu == 'menus' ? 'active' : ''}}" href="menu.html">Menus</a></li>
+                <li><a class="{{$activeMenu == 'packages' ? 'active' : ''}}" href="blog.html">Packages</a></li>
+                <li><a class="{{$activeMenu == 'galleries' ? 'active' : ''}}" href="typo.html">Galleries</a></li>
+                <li><a class="{{$activeMenu == 'articles' ? 'active' : ''}}" href="{{url('article')}}">Articles</a></li>
+                <li><a href="contact.html">About Us</a></li>
             </ul>
         </div>
     <script>

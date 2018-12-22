@@ -52,7 +52,7 @@ class ArticleController extends Controller
             $gambar = $request->file('cover');
             $filename = time() . '.' . $gambar->getClientOriginalExtension();
             if ($request->file('cover')->isValid()) {
-                Image::make($gambar)->resize(365, 280)->save(public_path('/backend/images/article/'.$filename));
+                Image::make($gambar)->resize(600, 321)->save(public_path('/backend/images/article/'.$filename));
                 $file = Article::create([
                     'title' => $request->title ?? $uploadedFile->getClientOriginalName(),
                     'slug' => str_slug($request->title),
@@ -68,7 +68,7 @@ class ArticleController extends Controller
             $gambar = $request->file('cover');
             $filename = time() . '.' . $gambar->getClientOriginalExtension();
             if ($request->file('cover')->isValid()) {
-                Image::make($gambar)->resize(365, 280)->save(public_path('/backend/images/article/'.$filename));
+                Image::make($gambar)->resize(600, 321)->save(public_path('/backend/images/article/'.$filename));
                 $file = Article::create([
                     'title' => $request->title ?? $uploadedFile->getClientOriginalName(),
                     'slug' => str_slug($request->title),
@@ -134,7 +134,7 @@ class ArticleController extends Controller
             }elseif ($request->hasFile('cover')){
                 $gambar = $request->file('cover');
                 $filename = time() . '.' . $gambar->getClientOriginalExtension();
-                Image::make($gambar)->resize(365, 280)->save(public_path('/backend/images/article/'.$filename));
+                Image::make($gambar)->resize(600, 321)->save(public_path('/backend/images/article/'.$filename));
                 $file = Article::findOrFail($id)->update([
                     'title' => $request->title,
                     'slug' => str_slug($request->title),
@@ -161,7 +161,7 @@ class ArticleController extends Controller
             }elseif ($request->hasFile('cover')){
                 $gambar = $request->file('cover');
                 $filename = time() . '.' . $gambar->getClientOriginalExtension();
-                Image::make($gambar)->resize(365, 280)->save(public_path('/backend/images/article/'.$filename));
+                Image::make($gambar)->resize(600, 321)->save(public_path('/backend/images/article/'.$filename));
                 $file = Article::findOrFail($id)->update([
                     'title' => $request->title,
                     'slug' => str_slug($request->title),

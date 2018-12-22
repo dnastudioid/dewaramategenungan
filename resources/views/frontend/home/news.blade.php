@@ -13,72 +13,32 @@
 			</div>
 			<div class="news-bottom">
 				<div class="news-bot">
-					<div class="col-md-6 news-bottom1 animated wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
-						<a href="single.html">
-							<div class="content-item">
-								<div class="overlay"></div>
-								<div class=" news-bottom2">
-									<ul class="grid-news">
-										<li><span><i class="glyphicon glyphicon-calendar"> </i>08.09.2014</span><b>/</b></li>
-										<li><span><i class="glyphicon glyphicon-comment"> </i>5 Comment</span><b>/</b></li>
-										<li><span><i class="glyphicon glyphicon-share"> </i>Share</span></li>
-									</ul>
-									<p>There are many variations of passages of Lorem Ipsum available</p>
-								</div>
+					@foreach ($articles as $article)
+						@if ($article->status == 'published')
+							<div class="col-md-6 news-bottom1 animated wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
+								@php
+									$image = $article->cover;
+								@endphp
+								<a href="{{url('article/read/'.$article->slug)}}">
+									<div class="content-item" style="background: url('{{asset('backend/images/article/'.$image)}}') no-repeat;">
+										<div class="overlay"></div>
+										{{-- <img src="{{asset('backend/images/article/'.$article->cover)}}" alt=""> --}}
+										<div class=" news-bottom2">
+											<ul class="grid-news">
+												<li><span><i class="glyphicon glyphicon-calendar"> </i>{{$article->created_at->format('d M Y')}}</span><b>/</b></li>
+												<li><span><i class="glyphicon glyphicon-comment"> </i>5 Comment</span><b>/</b></li>
+												<li><span><i class="glyphicon glyphicon-user"> </i>{{$article->user->name}}</span></li>
+											</ul>
+											<p>{{$article->title}}</p>
+										</div>
+									</div>
+								</a>
+								<br>
 							</div>
-						</a>
-					</div>
-					<div class="col-md-6 news-bottom1 animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
-						<a href="single.html">
-							<div class="content-item content-item1">
-								<div class="overlay"></div>
-								<div class=" news-bottom2">
-									<ul class="grid-news">
-											<li><span><i class="glyphicon glyphicon-calendar"> </i>08.09.2014</span><b>/</b></li>
-											<li><span><i class="glyphicon glyphicon-comment"> </i>5 Comment</span><b>/</b></li>
-											<li><span><i class="glyphicon glyphicon-share"> </i>Share</span></li>
-										</ul>
-									<p>There are many variations of passages of Lorem Ipsum available</p>
-								</div>
-							</div>
-						</a>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="news-bot">
-					<div class="col-md-6 news-bottom1">
-						<a href="single.html">
-							<div class="content-item content-item2 animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
-								<div class="overlay"></div>
-								<div class=" news-bottom2">
-									<ul class="grid-news">
-											<li><span><i class="glyphicon glyphicon-calendar"> </i>08.09.2014</span><b>/</b></li>
-											<li><span><i class="glyphicon glyphicon-comment"> </i>5 Comment</span><b>/</b></li>
-											<li><span><i class="glyphicon glyphicon-share"> </i>Share</span></li>
-										</ul>
-									<p>There are many variations of passages of Lorem Ipsum available</p>
-								</div>
-							</div>
-						</a>
-					</div>
-					<div class="col-md-6 news-bottom1 animated wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="500ms">
-						<a href="single.html">
-							<div class="content-item content-item3">
-								<div class="overlay"></div>
-								<div class=" news-bottom2">
-									<ul class="grid-news">
-											<li><span><i class="glyphicon glyphicon-calendar"> </i>08.09.2014</span><b>/</b></li>
-											<li><span><i class="glyphicon glyphicon-comment"> </i>5 Comment</span><b>/</b></li>
-											<li><span><i class="glyphicon glyphicon-share"> </i>Share</span></li>
-										</ul>
-									<p>There are many variations of passages of Lorem Ipsum available</p>
-								</div>
-							</div>
-						</a>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-			
+						@endif
+					@endforeach
+					{{-- <div class="clearfix"> </div> --}}
+				</div>	
 			</div>
 		</div>
 	</div>

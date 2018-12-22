@@ -1,4 +1,4 @@
-@extends('frontend.layouts.index')
+@extends('frontend.layouts.index',['activeMenu' => 'home'])
     @section('content')
     <div class="content" id="content-down">
         @include('frontend.home.about')

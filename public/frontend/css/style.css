@@ -358,7 +358,7 @@ ul.grid-news li b {
 }
 /*--conent--*/
 .content-item {
-  background: url(../images/ne.jpg) no-repeat;
+  /* background: url(../images/ne.jpg) no-repeat; */
   -moz-backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -758,6 +758,13 @@ i.glyphicon.glyphicon-calendar {
 }
 a.comments{
 	float:right;
+	color:#7C7C7C;
+    text-decoration:none;
+	font-size:1em;	
+}
+a.author{
+    float: inherit;
+    margin-left: 0.7em;
 	color:#7C7C7C;
 	text-decoration:none;
 	font-size:1em;	

@@ -1,4 +1,4 @@
-@extends('backend.layouts.app')
+@extends('backend.layouts.app', ['activeMenu' => 'menus'])
 
 @section('css')
 
@@ -30,8 +30,9 @@
                 </div>
                 <div class="x_content">
                     <br />
-                    <form role="form" action="{{Help::url('edit-menu')}}" method="post" enctype="multipart/form-data">
+                    <form role="form" action="{{Help::url('menu/'.$menu->id)}}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
+                    {{ method_field('PUT') }}
                     <div class="form-group">
                         <label for="name">Menu name</label>
                     <input type="text" name="name" class="form-control" placeholder="Enter menu name" value="{{$menu->name}}">
@@ -51,9 +52,6 @@
                     <div class="form-group">
                         <label for="file">Menu photo</label>
                         <input type="file" name="file" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <input type="hidden" name="id" value="{{$menu->id}}">
                     </div>
                     <div class="ln_solid"></div>
 

@@ -5,24 +5,39 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use Image;
-use File;
-use Storage;
-
 use App\Menu;
 
 class MenuController extends Controller
 {
-    public function getMenu(){
-    	$menus = Menu::all();
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $menus = Menu::all();
     	return view('backend.menu.index', compact('menus'));
     }
 
-    public function addMenu(){
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
         return view('backend.menu.create');
     }
 
-    public function storeMenu(Request $request){
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
         $file = $request->file('file');
         $filename = time() . '.' . $file->getClientOriginalExtension();
         Image::make($file)->save(public_path('/backend/images/menu/'.$filename));
@@ -36,16 +51,41 @@ class MenuController extends Controller
         return redirect()->back()->with('message', 'A new menu has been added!');
     }
 
-    public function editMenu($id){
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
         $menu = Menu::find($id);
         return view('backend.menu.edit', compact('menu'));
     }
 
-    public function updateMenu(Request $request){
-        $menu = Menu::find($request->id);
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $menu = Menu::findOrFail($id);
         if($request->hasFile('file')){
-            $last_file = File::exists(public_path('/backend/images/menu/'.$menu->file));
-            Storage::delete($menu->file);
+            $hapus = unlink(public_path('/backend/images/menu/') . $menu->file);
 
             $file = $request->file('file');
             $filename = time() . '.' . $file->getClientOriginalExtension();
@@ -69,5 +109,16 @@ class MenuController extends Controller
         }
 
         return redirect()->back()->with('message', 'Menu has been updated!');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
     }
 }
