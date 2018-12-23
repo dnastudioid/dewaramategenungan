@@ -1,4 +1,4 @@
-@extends('backend.layouts.app')
+@extends('backend.layouts.app', ['activeMenu' => 'gallery'])
 
 @section('css')
 <link href="{{asset('backend/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css')}}" rel="stylesheet">
@@ -28,7 +28,7 @@
             <h2>Galleries</h2>
             <div class="clearfix"></div>
           </div>
-          <a href="{{Help::url('add-photo')}}" class="btn btn-primary">Add Photo</a>
+          <a href="{{Help::url('gallery/create')}}" class="btn btn-primary">Add Photo</a>
           <div class="x_content">
             <table id="datatable" class="table table-striped table-bordered">
               <thead>
@@ -36,7 +36,7 @@
                   <th width="25px"><center>No</center></th>
                   <th><center>Created by</center></th>
                   <th><center>Image</center></th>
-                  <th><center>Caption</center></th>
+                  <th style="width: 300px;"><center>Caption</center></th>
                   <th><center>Date added</center></th>
                   <th><center>Opsi</center></th>
                 </tr>
@@ -52,10 +52,10 @@
                         <td><center> {{$gallery->name}} </center></td>
                         <td><center> <button class="btn btn-sm btn-success" onClick="showImage('{{$gallery->file}}');">Show image</button></center></td>
                         <td><center> {{$gallery->caption}} </center></td>
-                        <td><center> {{$gallery->created_at->format('d M Y')}} </center></td>
+                        <td><center> {{$gallery->galleryCreated->format('d M Y')}} </center></td>
                         <td><center>
-                            <a href="{{Help::url('edit-menu/'.$menu->id)}}" class="fa fa-pencil"></a>
-                            <a href="javascript:void(0)" class="fa fa-trash" onclick="deleteArticle('{{$menu->id}}')"></a>
+                            <a href="{{Help::url('gallery/'.$gallery->galleryId.'/edit')}}" class="fa fa-pencil"></a>
+                            <a href="javascript:void(0)" class="fa fa-trash" onclick="deleteGallery('{{$gallery->galleryId}}')"></a>
                         </center></td>
                     </tr>
                 @endforeach
@@ -83,16 +83,16 @@
 
     function showImage(file){
       bootbox.dialog({
-        message: '<img src="{{asset('backend/images/menu')}}/'+file+'" class="img-responsive">',
+        message: '<img src="{{asset('backend/images/gallery')}}/'+file+'" class="img-responsive">',
         closeButton: true,
         size: 'small'
       });
     }
 
-    function deleteArticle(id){
-        bootbox.confirm("Apakah anda ingin menghapus data ini ?", function(result){
+    function deleteGallery(id){
+        bootbox.confirm("Are you sure you want to delete this gallery ?", function(result){
             if (result) {
-                $('#formDelete').attr('action', '{{Help::url('article')}}/'+id);
+                $('#formDelete').attr('action', '{{Help::url('gallery')}}/'+id);
                 $('#formDelete').submit();
             }
         });

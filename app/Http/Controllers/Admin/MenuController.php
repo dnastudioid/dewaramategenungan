@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Menu;
+use Image;
 
 class MenuController extends Controller
 {
@@ -85,7 +86,7 @@ class MenuController extends Controller
     {
         $menu = Menu::findOrFail($id);
         if($request->hasFile('file')){
-            $hapus = unlink(public_path('/backend/images/menu/') . $menu->file);
+            unlink(public_path('/backend/images/menu/') . $menu->file);
 
             $file = $request->file('file');
             $filename = time() . '.' . $file->getClientOriginalExtension();
@@ -119,6 +120,9 @@ class MenuController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $menu = Menu::find($id);
+        unlink(public_path('/backend/images/menu/') . $menu->file);
+        $menu->delete();
+        return redirect()->back()->with('message', 'Menu deleted successfully!');
     }
 }

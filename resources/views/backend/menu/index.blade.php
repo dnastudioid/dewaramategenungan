@@ -1,4 +1,4 @@
-@extends('backend.layouts.app', ['activeMenu' => 'menus'])
+@extends('backend.layouts.app', ['activeMenu' => 'menu'])
 
 @section('css')
 <link href="{{asset('backend/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css')}}" rel="stylesheet">
@@ -70,8 +70,8 @@
   </div>
 </div>
 <form class="hidden" action="" method="post" id="formDelete">
-    {{ csrf_field() }}
-    <input type="hidden" name="_method" value="delete">
+  {{ csrf_field() }}
+  <input type="hidden" name="_method" value="delete">
 </form>
 <!-- /page content -->
 @endsection
@@ -92,9 +92,9 @@
     }
 
     function deleteMenu(id){
-        bootbox.confirm("Apakah anda ingin menghapus data ini ?", function(result){
+        bootbox.confirm("Are you sure you want to delete this menu?", function(result){
             if (result) {
-                $('#formDelete').attr('action', '{{Help::url('delete-menu')}}/'+id);
+              $('#formDelete').attr('action', '{{Help::url('menu')}}/'+id);
                 $('#formDelete').submit();
             }
         });

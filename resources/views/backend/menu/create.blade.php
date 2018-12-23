@@ -29,8 +29,7 @@
                 <div class="clearfix"></div>
               </div>
               <div class="x_content">
-                <br />
-                <form role="form" action="{{Help::url('add-menu')}}" method="post" enctype="multipart/form-data">
+                <form role="form" action="{{Help::url('menu')}}" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
                   <div class="form-group">
                     <label for="name">Menu name</label>
@@ -55,7 +54,7 @@
                   <div class="ln_solid"></div>
 
                   <div class="form-group">
-                    <a href="{{Help::url('menus')}}" class="btn btn-primary">Cancel</a>
+                    <a href="{{Help::url('menu')}}" class="btn btn-primary">Cancel</a>
                     <button type="submit" class="btn btn-success">Submit</button>
                   </div>
                 </form>

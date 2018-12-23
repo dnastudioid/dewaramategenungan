@@ -18,7 +18,11 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        $galleries = Gallery::join('users', 'users.id', '=', 'galleries.user_id')->get();
+
+        $galleries = Gallery::join('users', 'users.id', '=', 'galleries.user_id')
+        ->select('galleries.id as galleryId', 'galleries.created_at as galleryCreated', 'users.*', 'galleries.*')
+        ->get();
+
         return view('backend.gallery.index', compact('galleries'));
     }
 
@@ -27,16 +31,9 @@ class GalleryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        if($request->hasFile('file')){
-            $file = $request->file('file');
-            $fileName = time() . '.' . $file->getClientOriginalExtension();
-            Image::make($file)->save(public_path('/backend/images/gallery/'.$fileName));
-        }
-        Gallery::create([
-            'user_id' => Auth::user()->id,
-        ]);
+        return view('backend.gallery.create');
     }
 
     /**
@@ -47,7 +44,18 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($request->hasFile('file')){
+            $file = $request->file('file');
+            $fileName = time() . '.' . $file->getClientOriginalExtension();
+            Image::make($file)->save(public_path('/backend/images/gallery/'.$fileName));
+        }
+        Gallery::create([
+            'user_id' => Auth::user()->id,
+            'file' => $fileName,
+            'caption' => $request->caption,
+        ]);
+
+        return redirect()->back()->with('message', 'A photo has been added!');
     }
 
     /**
@@ -69,7 +77,8 @@ class GalleryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $gallery = Gallery::find($id);
+        return view('backend.gallery.edit', compact('gallery'));
     }
 
     /**
@@ -81,7 +90,24 @@ class GalleryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $gallery = Gallery::findOrFail($id);
+        if($request->hasFile('file')){
+            unlink(public_path('/backend/images/gallery/') . $gallery->file);
+
+            $file = $request->file('file');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            Image::make($file)->save(public_path('/backend/images/gallery/'.$filename));
+
+            $gallery->update([
+                'file' => $filename
+            ]);
+        }
+
+        $gallery->update([
+            'caption' => $request->caption,
+        ]);
+
+        return redirect()->back()->with('message', 'Gallery has been updated!');
     }
 
     /**
@@ -92,6 +118,9 @@ class GalleryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $gallery = Gallery::find($id);
+        unlink(public_path('/backend/images/gallery/') . $gallery->file);
+        $gallery->delete();
+        return redirect()->back()->with('message', 'Gallery deleted successfully!');
     }
 }

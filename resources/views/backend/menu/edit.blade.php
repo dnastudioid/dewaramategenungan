@@ -29,7 +29,6 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                    <br />
                     <form role="form" action="{{Help::url('menu/'.$menu->id)}}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     {{ method_field('PUT') }}
