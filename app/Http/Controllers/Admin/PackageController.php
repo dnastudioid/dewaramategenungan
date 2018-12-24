@@ -78,7 +78,7 @@ class PackageController extends Controller
     {
         $package = Package::findOrFail($id);
         $package->update($request->all());
-        return redirect(Help::url('package'))->with('message', 'Perubahan pada Paket'.$package->nama.'berhasil!');
+        return redirect(Help::url('package'))->with('message', 'Perubahan pada Paket "'.$package->nama.'" berhasil!');
     }
 
     /**
@@ -91,6 +91,6 @@ class PackageController extends Controller
     {
         $package = Package::findOrFail($id);
         $package->delete();
-        return redirect(Help::url('package'))->with('message', 'Paket '.$package->nama.' telah dihapus!');
+        return redirect(Help::url('package'))->with('message', 'Paket "'.$package->nama.'" telah dihapus!');
     }
 }
