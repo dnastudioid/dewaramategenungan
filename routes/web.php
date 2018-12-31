@@ -19,6 +19,10 @@ Route::namespace('Frontend')->group(function(){
     Route::get('/', 'HomeController@index');
     Route::get('article/read/{slug}', 'HomeController@read');
     Route::get('article','ArticleController@all');
+    
+    /* dityaherdi*/
+    Route::resource('packages', 'PackageController');
+    /* end dityaherdi*/
 });
 
 /* END OF THE FRONTEND ROUTES */
