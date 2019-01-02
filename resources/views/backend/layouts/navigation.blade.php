@@ -38,6 +38,7 @@
           <li><a><i class="fa fa-book"></i> Articles <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
               <li class="{{$activeMenu == 'add-article' ? 'active' : ''}}"><a href="{{Help::url('article/create')}}">Add Article</a></li>
+              <li class="{{$activeMenu == 'category' ? 'active' : ''}}"><a href="{{Help::url('article/category')}}">Categories</a></li>
               <li class="{{$activeMenu == 'article' ? 'active' : ''}}"><a href="{{Help::url('article')}}">Articles</a></li>
             </ul>
           </li>
@@ -47,7 +48,7 @@
               <li><a href="#">Galleries</a></li>
             </ul>
           </li>
-          <li><a href="{{Help::url('/')}}"><i class="fa fa-comments"></i> Comments </a></li>
+          <li class="{{$activeMenu == 'comment' ? 'active' : ''}}"><a href="{{Help::url('comment')}}"><i class="fa fa-comments"></i> Comments </a></li>
           <li><a href="{{url('')}}"><i class="fa fa-user"></i> Profile </a></li>
           @endif
         </ul>

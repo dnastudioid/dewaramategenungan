@@ -21,6 +21,7 @@ class CreateArticlesTable extends Migration
             $table->string('cover');
             $table->string('place');
             $table->text('description');
+            $table->string('categories')->nullable();
             $table->enum('status',['published','archived'])->default('archived');
             $table->timestamps();
 

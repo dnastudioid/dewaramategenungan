@@ -1,64 +1,84 @@
 @extends('backend.layouts.app',['activeMenu' => 'add-article'])
 
 @section('css')
-
+  <link rel="stylesheet" href="{{asset('backend/plugins/select2/dist/css/select2.min.css')}}">
 @endsection
 
 @section('content')
 <!-- page content -->
 <div class="right_col" role="main">
   <div class="">
-    @if (session('message'))
-        <div class="alert alert-success" style="margin-top: 75px; margin-bot: -50px">
-            {{ session('message') }}
-        </div>
-    @endif
-    
-    <div class="page-title">
-      <div class="title_left">
-        <h3>Tambah Artikel Baru</h3>
+      <div class="page-title">
       </div>
-    </div>
-    {{-- <div class="row"> --}}
-      <form role="form" action="{{Help::url('article')}}" method="post" enctype="multipart/form-data">
-        {{ csrf_field() }}
-          <div class="row">
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="col-sm-9 col-xs-9">
-                    <div class="form-group">
-                        <br>
-                        <label for="">Cover</label>
-                        <input type="file" name="cover" id="">
-                        <br>
+    @if (Session::has('success'))
+      <div class="alert alert-success alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          <h4><i class="icon fa fa-check"></i> Information !</h4>
+          {{Session::get('success')}}
+      </div>
+    @elseif (Session::has('error'))
+      <div class="alert alert-error alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          <h4><i class="icon fa fa-check"></i> Information !</h4>
+          {{Session::get('error')}}
+      </div>
+    @endif
+        <div class="page-title">
+          <div class="title_left">
+            <h3>Add New Article</h3>
+          </div>
+        </div>
+          <div class="x_panel">
+              <div class="x_content">
+                <form role="form" action="{{Help::url('article')}}" method="post" enctype="multipart/form-data">
+                  {{ csrf_field() }}
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                          <div class="col-sm-9 col-xs-9">
+                              <div class="form-group">
+                                  <br>
+                                  <label for="">Select Cover</label>
+                                  <input type="file" name="cover" id="">
+                                  <br>
+                              </div>
+                          </div>
+                          <div class="col-md-9 col-sm-9 col-xs-9">
+                            <textarea name="description" rows="13"></textarea>
+                            <br>
+                            <br>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <label for="">Title</label>
+                              <input type="text" name="title" id="" class="form-control" placeholder="Type title of article...">
+                            </div>
+                            <div class="form-group">
+                              <label for="">Place</label>
+                              <input type="text" name="place" id="" class="form-control" placeholder="Type place...">
+                            </div>
+                            <div class="form-group">
+                              <label>Select Categories</label>
+                              <select name="categories[]" class="form-control select2" multiple="multiple" style="width: 100%;" data-placeholder="Select Category">
+                                  @foreach ($category as $c)
+                                      <option value="{{$c->name}}">{{$c->name}}</option>
+                                  @endforeach
+                              </select>
+                              <h6>Note: Please add some Categories in Sub Article Menu or you can <a href="{{Help::url('article/category')}}" style="color: blue">Click Here!</a> </h6>
+                            </div>
+                            <input type="submit" name="publish" class="btn btn-primary btn-md" value="Publish">
+                            <input type="submit" name="archive" class="btn btn-success btn-md" value="Simpan Draft">
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-9 col-sm-9 col-xs-9">
-                  <textarea name="description" rows="13"></textarea>
-                  <br>
-                  <br>
-                </div>
-                <div class="col-md-3">
-                  <div class="form-group">
-                    <label for="">Judul</label>
-                    <input type="text" name="title" id="" class="form-control" placeholder="Masukan judul artikel...">
-                  </div>
-                  <div class="form-group">
-                    <label for="">Tempat</label>
-                    <input type="text" name="place" id="" class="form-control" placeholder="Masukan tempat artikel...">
-                  </div>
-                  
-                  <input type="submit" name="publish" class="btn btn-primary btn-md" value="Publish">
-                  <input type="submit" name="archive" class="btn btn-success btn-md" value="Simpan Draft">
-                </div>
-              </div>
-          </div>
-      </form>
-    {{-- </div> --}}
+            </form>
+        </div>
+    </div>
     <div class="clearfix"></div>
   </div>
 </div>
 @endsection
 @section('js')
+    <script src="{{asset('backend/plugins/select2/dist/js/select2.full.min.js')}}"></script>
     <script src="{{asset('backend/plugins/tinymce/jquery.tinymce.min.js')}}"></script>
     <script src="{{asset('backend/plugins/tinymce/tinymce.min.js')}}"></script>
     <script type="text/javascript">
@@ -91,5 +111,11 @@
       ],
       
     });
+    </script>
+    <script>
+      $(function (){
+        // initialize select2
+        $('.select2').select2()
+      })
     </script>
 @endsection
