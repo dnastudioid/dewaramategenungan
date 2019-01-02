@@ -14,7 +14,7 @@ class Article extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'user_id','title', 'slug', 'cover', 'place', 'description', 'status'
+        'user_id','title', 'slug', 'cover', 'place', 'description', 'categories', 'status'
     ];
 
     public function User(){

@@ -37,8 +37,12 @@
 							</div>
 						@endif
 					@endforeach
-					{{-- <div class="clearfix"> </div> --}}
-				</div>	
+					<div class="col-md-12">
+						<div class="text-center">
+							<a href="{{url('article')}}" class="btn btn-outline-primary" style="padding: 10px 85px; font-size: 18px">READ ALL NEWS</a>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

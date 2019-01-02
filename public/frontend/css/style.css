@@ -866,7 +866,7 @@ i.glyphicon.glyphicon-comment {
     font-weight: 700;
 }
 .lone-line p {
-    font-size: 1.15em;
+    font-size: 1.5em;
     color: #777;
     line-height: 2em;
 }
@@ -875,7 +875,7 @@ i.glyphicon.glyphicon-comment {
 }
 .lone-line p:before {
     content: "";
-    background: url(../images/qu3.png) no-repeat;
+    /* background: url(../images/qu3.png) no-repeat; */
     width: 30px;
     height:24px;
     display: inline-block;
@@ -917,7 +917,7 @@ ul.grid-blog {
   padding-right: 22px;
 }
 .leave h3{
-	    font-size: 2.5em;
+	    font-size: 2.4em;
     color: #97824B;
     font-family: 'Raleway', sans-serif;
     font-weight: 700;
@@ -971,7 +971,7 @@ ul.grid-blog {
     margin-top: 25px;
 }
 .comment {
-    padding: 4em 0;
+    padding: 1em 0;
 }
 /*----*/
 p.smith {
@@ -1026,7 +1026,7 @@ p.reply a i{
 .search{
 	position:relative;
 	border:none;
-	background:#000;
+	background: #353535;
 	margin:1em 0 0;
 }
 .search input[type="text"] {

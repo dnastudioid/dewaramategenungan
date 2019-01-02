@@ -1,7 +1,7 @@
-@extends('backend.layouts.app')
+@extends('backend.layouts.app',['activeMenu' => 'article'])
 
 @section('css')
-
+  <link rel="stylesheet" href="{{asset('backend/plugins/select2/dist/css/select2.min.css')}}">
 @endsection
 
 @section('content')
@@ -20,7 +20,7 @@
       </div>
     </div>
     {{-- <div class="row"> --}}
-      <form role="form" action="{{Help::url('article/'.$data->id)}}" method="post" enctype="multipart/form-data">
+      <form role="form" action="{{Help::url('article/'.$data->id.'/edit')}}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         <input type="hidden" name="_method" value="put">
           <div class="row">
@@ -47,7 +47,19 @@
                     <label for="">Tempat</label>
                     <input type="text" name="place" id="" class="form-control" value="{{$data->place}}">
                   </div>
-                  
+                  <div class="form-group">
+                    <label>Article Categories</label>
+                    <select class="form-control" style="width: 100%;" data-placeholder="Select Category" disabled>
+                        <option value="{{$data->categories}}">{{$data->categories}}</option>
+                    </select>
+                    <label>Select Categories</label>
+                    <select name="categories[]" class="form-control select2" multiple="multiple" style="width: 100%;" data-placeholder="Select Category">
+                        @foreach ($category as $c)
+                            <option value="{{$c->name}}">{{$c->name}}</option>
+                        @endforeach
+                    </select>
+                    <h6>Note: Please add some Categories in Sub Article Menu or you can <a href="{{Help::url('article/category')}}" style="color: blue">Click Here!</a> </h6>
+                  </div>
                   <input type="submit" name="publish" class="btn btn-primary btn-md" value="Publish">
                   <input type="submit" name="archive" class="btn btn-success btn-md" value="Simpan Draft">
                 </div>
@@ -60,6 +72,7 @@
 </div>
 @endsection
 @section('js')
+  <script src="{{asset('backend/plugins/select2/dist/js/select2.full.min.js')}}"></script>
   <script src="{{asset('backend/plugins/tinymce/jquery.tinymce.min.js')}}"></script>
   <script src="{{asset('backend/plugins/tinymce/tinymce.min.js')}}"></script>
   <script type="text/javascript">
@@ -92,4 +105,10 @@
                 ]
         });
   </script>
+  <script>
+      $(function (){
+        // initialize select2
+        $('.select2').select2()
+      })
+    </script>
 @endsection
