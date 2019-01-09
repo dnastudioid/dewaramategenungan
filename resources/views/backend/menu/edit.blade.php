@@ -13,6 +13,11 @@
             {{ session('message') }}
         </div>
     @endif
+    @if(Session::has('error_message'))
+      <div class="alert alert-danger" style="margin-top: 75px; margin-bot: -50px">
+          {{Session::get('error_message')}}
+      </div>
+    @endif
     
     <div class="page-title">
       <div class="title_left">
