@@ -19,7 +19,13 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        $article = Article::all();
+
+        return view('frontend.article.index');
+    }
+
+    public function show(){
+        return view('frontend.article.detail');
     }
 
     /**

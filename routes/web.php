@@ -17,8 +17,11 @@ Auth::routes();
 /* THIS IS START THE FRONTEND ROUTES */
 Route::namespace('Frontend')->group(function(){
     Route::get('/', 'HomeController@index');
+    Route::get('menus', 'MenuController@index');
+    Route::get('about-us', 'AboutContoller@index');
     Route::get('article/read/{slug}', 'ArticleController@read');
-    Route::get('article','ArticleController@all');
+    Route::get('articles','ArticleController@index');
+    Route::get('detail-article','ArticleController@show');
     Route::post('article/{id}', 'ArticleController@comment');
 });
 
