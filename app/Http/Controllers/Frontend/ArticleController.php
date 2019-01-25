@@ -19,13 +19,20 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $article = Article::all();
+        $articles = Article::all();
 
-        return view('frontend.article.index');
+        return view('frontend.article.index', compact('articles'));
     }
 
-    public function show(){
-        return view('frontend.article.detail');
+    public function show($slug){
+        $articles = Article::where('slug', '=', $slug)->firstOrFail();
+        $all = Article::all();
+        $news = $articles->id;
+        $comments = Comment::where('article_id',$news)->get();
+        $count = Comment::where('article_id','=',$articles->id)
+        ->where('status','=','approved')
+        ->count();
+        return view('frontend.article.detail',compact('articles','all','comments','count'));
     }
 
     /**

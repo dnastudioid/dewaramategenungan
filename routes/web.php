@@ -21,7 +21,7 @@ Route::namespace('Frontend')->group(function(){
     Route::get('about-us', 'AboutContoller@index');
     Route::get('article/read/{slug}', 'ArticleController@read');
     Route::get('articles','ArticleController@index');
-    Route::get('detail-article','ArticleController@show');
+    Route::get('detail-article/{slug}','ArticleController@show');
     Route::post('article/{id}', 'ArticleController@comment');
 });
 

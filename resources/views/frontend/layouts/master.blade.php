@@ -13,7 +13,8 @@
 	<link href="{{URL::to('frontend/css/color-switcher-design.css')}}" rel="stylesheet">
 	<link id="theme-color-file" href="{{URL::to('frontend/css/color-themes/orange-theme.css')}}" rel="stylesheet">
 	<link rel="shortcut icon" href="{{URL::to('frontend/images/favicon.png')}}" type="image/x-icon">
-	<link rel="icon" href="{{URL::to('frontend/images/favicon.png')}}" type="image/x-icon">
+    <link rel="icon" href="{{URL::to('frontend/images/favicon.png')}}" type="image/x-icon">
+    <link href="toastr.css" rel="stylesheet"/>
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -262,6 +263,7 @@
 <script src="{{URL::to('frontend/js/wow.js')}}"></script>
 <script src="{{URL::to('frontend/js/script.js')}}"></script>
 <script src="{{URL::to('frontend/js/color-settings.js')}}"></script>
-
+<script src="jquery.min.js"></script>
+<script src="toastr.js"></script>
 </body>
 </html>
