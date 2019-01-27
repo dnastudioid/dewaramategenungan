@@ -114,9 +114,9 @@
                         
                         <!-- Search -->
                         <div class="sidebar-widget search-box">
-                            <form method="post" action="https://expert-themes.com/html/shangrila/contact.html">
+                            <form action="{{ url('article/search') }}" method="GET">
                                 <div class="form-group">
-                                    <input type="search" name="search-field" value="" placeholder="Search" required>
+                                    <input type="search" name="search" value="" placeholder="Search" required>
                                     <button type="submit"><span class="icon fa fa-search"></span></button>
                                 </div>
                             </form>
@@ -129,11 +129,10 @@
                             </div>
                             @php
                                 $categories = explode(',',strtr($articles->categories,[' ' => '']));
-                                
                             @endphp
                             @foreach ($categories as $category)
                                 <ul class="blog-cat style-two">
-                                    <li><a href="#">{{$category}}</a></li>
+                                    <li><a>{{$category}}</a></li>
                                 </ul>
                             @endforeach
                         </div>

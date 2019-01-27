@@ -19,10 +19,12 @@ Route::namespace('Frontend')->group(function(){
     Route::get('/', 'HomeController@index');
     Route::get('menus', 'MenuController@index');
     Route::get('about-us', 'AboutController@index');
+
     Route::get('article/read/{slug}', 'ArticleController@read');
     Route::get('articles','ArticleController@index');
     Route::get('detail-article/{slug}','ArticleController@show');
     Route::post('article/{id}', 'ArticleController@comment');
+    Route::get('article/search', 'ArticleController@search');
 });
 
 /* END OF THE FRONTEND ROUTES */
