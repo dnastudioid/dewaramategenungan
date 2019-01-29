@@ -13,6 +13,11 @@
             {{ session('message') }}
         </div>
     @endif
+    @if(Session::has('error_message'))
+      <div class="alert alert-danger" style="margin-top: 75px; margin-bot: -50px">
+          {{Session::get('error_message')}}
+      </div>
+    @endif
     
     <div class="page-title">
       <div class="title_left">
@@ -33,11 +38,11 @@
                 {{ csrf_field() }}
                   <div class="form-group">
                     <label for="name">Menu name</label>
-                    <input type="text" name="name" class="form-control" placeholder="Enter menu name">
+                    <input type="text" name="name" class="form-control" placeholder="Enter menu name" value="{{old('name')}}">
                   </div>
                   <div class="form-group">
                     <label for="description">Description</label>
-                    <textarea name="description" rows="5" class="form-control" placeholder="Enter a description"></textarea>
+                    <textarea name="description" rows="5" class="form-control" placeholder="Enter a description">{{old('description')}}</textarea>
                   </div>
                   <div class="form-group">
                     <label for="category">Category</label>

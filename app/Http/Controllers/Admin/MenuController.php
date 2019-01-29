@@ -39,6 +39,23 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->name == null) {
+            \Session::flash('error_message', "Menus's name is required");
+            return redirect()->back()->withInput();
+        }
+        if ($request->description == null) {
+            \Session::flash('error_message', "Menus's description is required");
+            return redirect()->back()->withInput();
+        }
+        if ($request->category == null) {
+            \Session::flash('error_message', "Menus's category is required");
+            return redirect()->back()->withInput();
+        }
+        if(!$request->hasFile('file')){
+            \Session::flash('error_message', 'Please select a photo of this menu');
+            return redirect()->back()->withInput();
+        }
+
         $file = $request->file('file');
         $filename = time() . '.' . $file->getClientOriginalExtension();
         Image::make($file)->save(public_path('/backend/images/menu/'.$filename));
@@ -84,6 +101,15 @@ class MenuController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if ($request->name == null) {
+            \Session::flash('error_message', "Menus's name is required");
+            return redirect()->back()->withInput();
+        }
+        if ($request->description == null) {
+            \Session::flash('error_message', "Menus's description is required");
+            return redirect()->back()->withInput();
+        }
+
         $menu = Menu::findOrFail($id);
         if($request->hasFile('file')){
             unlink(public_path('/backend/images/menu/') . $menu->file);

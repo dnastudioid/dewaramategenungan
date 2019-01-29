@@ -20,18 +20,19 @@
                     @endphp
                     <div class="col-md-4 blog-top">
                         <div class="blog-in">
-                            <a href="single.html"><img class="img-responsive" src="{{asset('backend/images/article/'.$article->cover)}}" alt=" "></a>
+                            <a href="{{url('article/read/'.$article->slug)}}"><img class="img-responsive" src="{{asset('backend/images/article/'.$article->cover)}}" alt=" "></a>
                             <div class="blog-grid">
-                                <h3><a href="single.html">{{$article->title}}</a></h3>
+                                <h3><a href="{{url('article/read/'.$article->slug)}}">{{$article->title}}</a></h3>
                                 <div class="date">
                                     <span class="date-in"><i class="glyphicon glyphicon-calendar"> </i>{{$article->created_at->format('d M Y')}}</span>
                                     <a class="author"><i class="glyphicon glyphicon-user"> </i> {{$article->user->name}}</a>
-                                    <a class="comments"><i class="glyphicon glyphicon-comment"></i>24</a>
-                                    <div class="clearfix"> </div>
                                 </div>
+                                {{-- <span class="comments pull-left"><i class="glyphicon glyphicon-comment"></i>{{$count}}</span> --}}
+                                <br>
+                                <br>
                                 <p>{!! str_limit($content, 100) !!}</p>
                                 <div class="more">						
-                                    <a class="link link-yaku" href="single.html">
+                                    <a class="link link-yaku" href="{{url('article/read/'.$article->slug)}}">
                                         <span>R</span><span>e</span><span>a</span><span>d</span> <span>M</span><span>o</span><span>r</span><span>e</span>					
                                     </a>
                                 </div>
@@ -42,9 +43,7 @@
                     <div class="clearfix"> </div>
                 </div>
             </div>
-            @include('frontend.article.categories')
+            @include('frontend.article.widget-all')
         <div class="clearfix"> </div>
-        
     </div>
-    
 </div>

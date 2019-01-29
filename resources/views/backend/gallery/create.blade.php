@@ -13,6 +13,11 @@
             {{ session('message') }}
         </div>
     @endif
+    @if(Session::has('error_message'))
+      <div class="alert alert-danger" style="margin-top: 75px; margin-bot: -50px">
+          {{Session::get('error_message')}}
+      </div>
+    @endif
     
     <div class="page-title">
       <div class="title_left">
@@ -37,7 +42,7 @@
                     </div>
                     <div class="form-group">
                         <label for="caption">Caption</label>
-                        <textarea name="caption" rows="6" class="form-control" placeholder="Write a caption"></textarea>
+                        <textarea name="caption" rows="6" class="form-control" placeholder="Write a caption">{{old('caption')}}</textarea>
                     </div>
                     <div class="ln_solid"></div>
 

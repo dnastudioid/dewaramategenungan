@@ -53,7 +53,27 @@ Route::group(['middleware' => 'role:admin', 'prefix' => 'admin', 'namespace' => 
     Route::get('dashboard', 'DashboardController@index');
 
     /* Pradipta */
-    Route::resource('article', 'ArticleController');
+    
+    /**************** CATEGORY ****************/
+    Route::get('article/category', 'ArticleController@category');
+    Route::post('article/category', 'ArticleController@addCategory');
+    Route::get('article/category/{id}', 'ArticleController@editCategory');
+    Route::put('article/category/{id}', 'ArticleController@updateCategory');
+    Route::delete('article/category/{id}', 'ArticleController@deleteCategory');
+
+    /**************** ARTICLE *****************/
+    Route::get('article', 'ArticleController@index');
+    Route::get('article/create', 'ArticleController@create');
+    Route::post('article', 'ArticleController@store');
+    Route::get('article/{id}/edit', 'ArticleController@edit');
+    Route::put('article/{id}/edit', 'ArticleController@update');
+    Route::delete('article/{id}', 'ArticleController@delete');
+
+    /**************** COMMENT *****************/
+    Route::get('comment', 'CommentController@index');
+    Route::post('comment/approve/{id}', 'CommentController@approve');
+    Route::post('comment/notapprove/{id}', 'CommentController@disapprove');
+    Route::delete('comment/{id}', 'CommentController@delete');
     /* End Pradipta */
 
     //suhendra

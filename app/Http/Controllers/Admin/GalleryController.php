@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Gallery;
 use Auth;
 use Image;
+use Validator;
 
 class GalleryController extends Controller
 {
@@ -44,11 +45,20 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->hasFile('file')){
-            $file = $request->file('file');
-            $fileName = time() . '.' . $file->getClientOriginalExtension();
-            Image::make($file)->save(public_path('/backend/images/gallery/'.$fileName));
+
+        if(!$request->hasFile('file')){
+            \Session::flash('error_message', 'Please select a photo you want to post');
+            return redirect()->back()->withInput();
         }
+        if ($request->caption == null) {
+            \Session::flash('error_message', "Caption's field is required");
+            return redirect()->back()->withInput();
+        }
+
+        $file = $request->file('file');
+        $fileName = time() . '.' . $file->getClientOriginalExtension();
+        Image::make($file)->save(public_path('/backend/images/gallery/'.$fileName));
+
         Gallery::create([
             'user_id' => Auth::user()->id,
             'file' => $fileName,
@@ -90,6 +100,11 @@ class GalleryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if ($request->caption == null) {
+            \Session::flash('error_message', "Caption's field is required");
+            return redirect()->back()->withInput();
+        }
+
         $gallery = Gallery::findOrFail($id);
         if($request->hasFile('file')){
             unlink(public_path('/backend/images/gallery/') . $gallery->file);
