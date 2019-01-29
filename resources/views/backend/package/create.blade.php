@@ -15,7 +15,7 @@
             
             <div class="page-title">
                 <div class="title_left">
-                <h3>Tambah Paket Baru</h3>
+                <h3>Add New Package</h3>
                 </div>
             </div>
 
@@ -24,19 +24,41 @@
 
                     <form id="demo-form" method="POST" novalidate action="{{ Help::url('package') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
-                        <label for="nama_paket">Nama Paket :</label> <span class="red">{{ $errors->first('nama') }}</span>
-                        <input type="text" id="nama_paket" class="form-control" name="nama" required="" placeholder="Masukkan Nama Paket...">
+                        <label for="nama_paket">Package Name :</label> <span class="red">{{ $errors->first('nama') }}</span>
+                        <input 
+                            type="text"
+                            id="nama_paket"
+                            class="form-control"
+                            name="nama"
+                            required=""
+                            placeholder="Enter package's name"
+                            value="{{ old('nama') }}"    
+                        >
                         <br>
 
-                        <label for="price">Harga (Per Orang) :</label> <span class="red">{{ $errors->first('price') }}</span>
-                        <input type="number" id="price" class="form-control" name="price" required="" placeholder="Masukkan Harga...">
+                        <label for="price">Price (Each Person) :</label> <span class="red">{{ $errors->first('price') }}</span>
+                        <input 
+                            type="number"
+                            id="price"
+                            class="form-control"
+                            name="price"
+                            required=""
+                            placeholder="Enter package's price"
+                            value="{{ old('price') }}"    
+                        >
                         <br>
 
                         <label for="detail">Detail</label>
-                        <textarea class="form-control" id="detail" name="detail"></textarea>
+                        <textarea 
+                            class="form-control"
+                            id="detail"
+                            name="detail"
+                            placeholder="Enter a descrition"
+                            rows="7"
+                        ></textarea>
                         <br>
 
-                        <button class="btn btn-primary" type="submit">Simpan</button>
+                        <button class="btn btn-success" type="submit">Submit</button>
                     </form>
 
                 </div>

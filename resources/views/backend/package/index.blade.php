@@ -25,17 +25,17 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
-                <h2>Data Artikel</h2>
+                <h2>Data Package</h2>
                 <div class="clearfix"></div>
                 </div>
-                <a href="#" class="btn btn-primary">Tambah Paket</a>
+                <a href="{{ Help::url('package/create') }}" class="btn btn-primary">Add Package</a>
                 <div class="x_content">
                 <table id="datatable" class="table table-striped table-bordered">
                     <thead>
                     <tr>
                         <th width="25px"><center>No</center></th>
-                        <th><center>Nama Paket</center></th>
-                        <th><center>Harga</center></th>
+                        <th><center>Name</center></th>
+                        <th><center>Price</center></th>
                         <th><center>Detail</center></th>
                         <th><center>Opsi</center></th>
                     </tr>
@@ -51,16 +51,16 @@
                             <td><center> {{ $package->price }} </center></td>
                             <td>
                                 <center>
-                                        <button type="button" class="btn btn-primary" 
+                                        <button type="button" class="btn btn-success" 
                                             data-toggle="modal" data-target="#detailPackageModal{{ $package->id }}">
-                                            Lihat Detail
+                                            Show Detail
                                         </button>
                                 </center>
                             </td>
                             <td>
                                 <center> 
                                     <a href="{{ Help::url('package/'.$package->id.'/edit') }}" class="btn btn-warning btn-sm"><i class="fa fa-pencil mr-2"></i> Edit </a>
-                                    <a href="javascript:void(0)" class="btn btn-danger btn-sm" onclick="deletePackage({{ $package->id }}, '{{ $package->nama }}')"><i class="fa fa-trash"></i> Hapus</a>
+                                    <a href="javascript:void(0)" class="btn btn-danger btn-sm" onclick="deletePackage({{ $package->id }}, '{{ $package->nama }}')"><i class="fa fa-trash"></i> Delete</a>
                                 </center>
                             </td>
                         </tr>
